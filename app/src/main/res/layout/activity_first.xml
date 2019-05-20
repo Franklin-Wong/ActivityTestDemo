@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btStartNormal"
+        android:background="#a6a6a6"
+        android:text="开启SecondActivity"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btFinish"
+        android:background="#a6a6a6"
+        android:text="关闭"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btOpenList"
+        android:background="#a6a6a6"
+        android:text="打开列表"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btOpenFragment"
+        android:background="#a6a6a6"
+        android:text="打开碎片界面"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btOpenNewsFragment"
+        android:background="#a6a6a6"
+        android:text="打开新闻列表"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
