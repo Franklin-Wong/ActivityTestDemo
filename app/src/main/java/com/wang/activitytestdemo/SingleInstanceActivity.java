@@ -3,76 +3,39 @@ package com.wang.activitytestdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+import android.view.KeyEvent;
 
-/**
- * Created by Wongerfeng on 2018/3/14.
- */
-
-public class FirstActivity extends AppCompatActivity{
-
-    private static final String TAG = "FirstActivity";
-    private String mString;
-    private long mLong;
-    private TextView mTextView;
-
+public class SingleInstanceActivity extends AppCompatActivity {
+    private static final String TAG = "SingleInstanceActivity";
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Log.i(TAG, "onBackPressed: ---------");
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
         Log.i(TAG, "onCreate: ");
-//        View btOpenList = findViewById(R.id.btOpenList);
-        findViewById(R.id.btStartNormal).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.btFinish).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        findViewById(R.id.btOpenList).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this, ListActivity.class));
-            }
-        });
-        findViewById(R.id.btOpenFragment).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this, FragmentActivity.class));
-            }
-        });
-        findViewById(R.id.btOpenNewsFragment).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this, NewsActivity.class));
-            }
-        });
-
+        setContentView(R.layout.activity_single_instance);
 
     }
+
+//    @Override
+//    public void onBackPressed() {
+////        super.onBackPressed();
+//        startActivity(new Intent(this, SecondActivity.class));
+//
+//    }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.i(TAG, "onNewIntent: intent = "+intent.toString());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(this, SecondActivity.class));
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -140,4 +103,5 @@ public class FirstActivity extends AppCompatActivity{
         super.onRestart();
         Log.i(TAG, "onRestart: ");
     }
+
 }

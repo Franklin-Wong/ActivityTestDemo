@@ -2,6 +2,7 @@ package com.wang.activitytestdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,20 +15,6 @@ import android.view.View;
 public class SecondActivity extends AppCompatActivity {
 
     private static final String TAG = "SecondActivity";
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Log.i(TAG, "onBackPressed: ---------");
-    }
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,8 +35,55 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+        findViewById(R.id.btOpenSingleInstance).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecondActivity.this, SingleInstanceActivity.class));
+            }
+        });
 
 
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.i(TAG, "onBackPressed: ---------");
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.i(TAG, "onNewIntent: intent = "+intent.toString());
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        Log.i(TAG, "onSaveInstanceState: outState = "+ outState.toString());
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState: outState = "+ outState.toString());
+    }
+
+    @Override
+    public void onStateNotSaved() {
+        super.onStateNotSaved();
+        Log.i(TAG, "onStateNotSaved: ");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "onRestoreInstanceState: savedInstanceState = "+ savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        Log.i(TAG, "onRestoreInstanceState: savedInstanceState = "+ savedInstanceState);
     }
 
     @Override
