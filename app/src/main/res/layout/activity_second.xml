@@ -20,4 +20,15 @@
         android:layout_marginTop="32dip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btOpenSingleInstance"
+        android:background="#a6a6a6"
+        android:text="启动SingleInstance"
+        android:layout_gravity="center"
+        android:padding="16dip"
+        android:layout_marginTop="32dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
